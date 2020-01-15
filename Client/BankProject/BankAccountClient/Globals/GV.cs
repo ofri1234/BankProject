@@ -11,9 +11,8 @@ namespace BankAccountClient.Globals
 {
     public class GV
     {
-        //Test
         public static TextBlock Invoker = new TextBlock();
-
+        
 
         public const string IPAddress = "http://127.0.0.1:104";
         public static Socket Session = Session ?? IO.Socket(IPAddress);
