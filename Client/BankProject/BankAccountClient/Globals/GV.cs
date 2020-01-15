@@ -11,6 +11,7 @@ namespace BankAccountClient.Globals
 {
     public class GV
     {
+        //Test
         public static TextBlock Invoker = new TextBlock();
 
 
