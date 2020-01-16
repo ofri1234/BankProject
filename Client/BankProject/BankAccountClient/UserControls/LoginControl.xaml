@@ -16,7 +16,7 @@
             <TextBox Height="23" Canvas.Left="151" TextWrapping="Wrap" Text="{Binding LoginModel.Password}" Canvas.Top="184" Width="204"/>
             <TextBlock FontSize="25" Canvas.Left="23" TextWrapping="Wrap" Text="Username :" Canvas.Top="83"/>
             <TextBlock Canvas.Left="25" FontSize="25" TextWrapping="Wrap" Text="Password :" Canvas.Top="174"/>
-            <Button Command="{Binding LoginCmd}" FontSize="25" Content="Login" Canvas.Left="55" Canvas.Top="232" Width="280" Height="49"/>
+            <Button IsEnabled="{Binding LoginBtnActiveState}" Command="{Binding LoginCmd}" FontSize="25" Content="Login" Canvas.Left="55" Canvas.Top="232" Width="280" Height="49"/>
 
 
         </Canvas>

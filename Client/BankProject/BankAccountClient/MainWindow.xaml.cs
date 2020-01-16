@@ -28,7 +28,7 @@ namespace BankAccountClient
 
             GV.MCanvas = mainCanvas;
             GV.MainWindow = window;
-
+            GV.MGrid = MainGrid;
 
             ServerStarter serverIniter = new ServerStarter();
         }

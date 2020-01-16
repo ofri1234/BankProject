@@ -9,7 +9,7 @@ using Quobject.SocketIoClientDotNet.Client;
 
 namespace BankAccountClient.Globals
 {
-    public class GV
+    public static class GV
     {
         public static TextBlock Invoker = new TextBlock();
         
@@ -20,6 +20,8 @@ namespace BankAccountClient.Globals
 
         public static Window MainWindow;
         public static Canvas MCanvas;
+
+        public static Grid MGrid { get; set; }
 
         public static bool IsLoggedIn = false;
     }
