@@ -18,17 +18,18 @@ using BankAccountClient.Initializers;
 namespace BankAccountClient
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static MainWindow Instnace;
         public MainWindow()
         {
             InitializeComponent();
-
-            GV.MCanvas = mainCanvas;
-            GV.MainWindow = window;
-            GV.MGrid = MainGrid;
+            Instnace = this;
+            //GV.MCanvas = mainCanvas;
+            //GV.MWindow = window;
+            //GV.MGrid = MainGrid;
 
             ServerStarter serverIniter = new ServerStarter();
         }

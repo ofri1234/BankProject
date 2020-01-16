@@ -50,11 +50,19 @@ namespace BankAccountClient.Globals
             {
 
                 GV.MCanvas.Children.Clear();
-                GV.MainWindow.Width = window.Width;
-                GV.MainWindow.Height = window.Height;
+                GV.MWindow.Width = window.Width;
+                GV.MWindow.Height = window.Height;
                 GV.MCanvas.Children.Add(window);
                 if (title != "")
-                    GV.MainWindow.Title = title;
+                    GV.MWindow.Title = title;
+            });
+        }
+        public static void ChangeTitle(this object en, string title)
+        {
+            UiChange(null, () =>
+            {
+                if (title != "")
+                    GV.MWindow.Title = title;
             });
         }
     }

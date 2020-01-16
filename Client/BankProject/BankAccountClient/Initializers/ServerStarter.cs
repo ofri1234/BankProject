@@ -19,16 +19,16 @@ namespace BankAccountClient.Initializers
 
             var session = GV.Session;
             session.On("disconnect", () => { OnClose(); });
-            GV.MainWindow.Hide();
-            GV.MainWindow.Width = 0;
-            GV.MainWindow.Height = 0;
+            GV.MWindow.Hide();
+            GV.MWindow.Width = 0;
+            GV.MWindow.Height = 0;
             if (session != null)
             {
                 session.On("connectSucess", (d) => { connectionSucesss = true; });
                 Thread checker = new Thread(() =>
                 {
                     //Got 3 Secons to check if connection was a sucess or not
-                    Thread.Sleep(1000);
+                    Thread.Sleep(3000);
                     if (!connectionSucesss)
                     {
                         //Server is not running
@@ -42,7 +42,7 @@ namespace BankAccountClient.Initializers
                         {
                             this.ChangeScreen(new LoginControl(), "Login Screen");
                         });
-                        this.UiChange(() => { GV.MainWindow.Show(); });
+                        this.UiChange(() => { GV.MWindow.Show(); });
                     }
                 });
                 checker.Start();

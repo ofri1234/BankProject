@@ -104,48 +104,71 @@ namespace BankAccountClient.ViewModel
 
         private void TrasitionToDashBoard()
         {
-            var mGrid = GV.MGrid;
-            int GridColCount = 3;
-            #region PhaseOne - Remove Canvas From Grid
-            foreach (var child in mGrid.Children)
+            GV.Invoker.UiChange(() =>
             {
-                if (child is Canvas cns)
+
+                var mGrid = GV.MGrid;
+                mGrid.ShowGridLines = true;
+                int GridColCount = 3;
+                #region PhaseOne - Remove Canvas From Grid
+                foreach (var child in mGrid.Children)
                 {
-                    mGrid.Children.Remove(cns);
-                    return;
+                    if (child is Canvas cns)
+                    {
+                        mGrid.Children.Remove(cns);
+                        break;
 
+                    }
                 }
-            }
-            #endregion
+                #endregion
 
-            #region PhaseTwo - Add ColumnDefenition To Grid
+                #region PhaseTwo - Add ColumnDefenition To Grid
 
-            for (int i = 0; i < GridColCount; i++)
-            {
-                ColumnDefinition cd = new ColumnDefinition();
-                if (i == 1)
+                for (int i = 0; i < GridColCount; i++)
                 {
-                    cd.Width = new GridLength(80, GridUnitType.Star);
+                    ColumnDefinition cd = new ColumnDefinition();
+                    if (i == 0)
+                    {
+                        cd.Width = new GridLength(25, GridUnitType.Star);
+
+                    }
+
+                    if (i == 1)
+                    {
+                        cd.Width = new GridLength(50, GridUnitType.Star);
+                    }
+
+                    if (i == 2)
+                    {
+                        cd.Width = new GridLength(25, GridUnitType.Star);
+
+                    }
+
+                    mGrid.ColumnDefinitions.Add(cd);
                 }
-                mGrid.ColumnDefinitions.Add(cd);
-            }
-            #endregion
+                #endregion
 
-            #region PhaseThree - Add DashBoard ViewModels
+                #region PhaseThree - Add DashBoard ViewModels
 
-            for (int i = 0; i < GridColCount; i++)
-            {
-                Rectangle r = new Rectangle();
-                if(i == 1)
-                r.Fill = new SolidColorBrush(Colors.Red);
-                if (i == 2)
-                    r.Fill = new SolidColorBrush(Colors.Blue);
-                if (i == 3)
-                    r.Fill = new SolidColorBrush(Colors.Black);
-            }
+                for (int i = 0; i < GridColCount; i++)
+                {
+                    Rectangle r = new Rectangle();
+                    if (i == 0)
+                       // r.Fill = new SolidColorBrush(Colors.Red);
+                    if (i == 1)
+                       // r.Fill = new SolidColorBrush(Colors.Blue);
+                    if (i == 2)
+                        //r.Fill = new SolidColorBrush(Colors.Black);
+                    Grid.SetColumn(r, i);
+                    mGrid.Children.Add(r);
+                }
+                GV.MWindow.Width = 1200;
+                GV.MWindow.Height = 600;
+                this.ChangeTitle("Dashboard Screen");
 
+                #endregion
+            });
 
-            #endregion
         }
     }
 }

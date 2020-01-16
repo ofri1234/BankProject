@@ -18,10 +18,19 @@ namespace BankAccountClient.Globals
         public static Socket Session = Session ?? IO.Socket(IpAddress);
 
 
-        public static Window MainWindow;
-        public static Canvas MCanvas;
+        public static Window MWindow
+        {
+            get { return MainWindow.Instnace.window == null ? null : MainWindow.Instnace.window; }
+        }
+        public static Canvas MCanvas
+        {
+            get { return MainWindow.Instnace.mainCanvas == null ? null : MainWindow.Instnace.mainCanvas; }
+        }
 
-        public static Grid MGrid { get; set; }
+        public static Grid MGrid
+        {
+            get { return MainWindow.Instnace.MainGrid == null? null : MainWindow.Instnace.MainGrid; }
+        }
 
         public static bool IsLoggedIn = false;
     }
