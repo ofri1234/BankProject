@@ -16,7 +16,7 @@ namespace BankAccountClient.Initializers
         private bool connectionSucesss = false;
         public ServerStarter()
         {
-
+            GV.InitServer();
             var session = GV.Session;
             session.On("disconnect", () => { OnClose(); });
             GV.MWindow.Hide();
@@ -53,6 +53,7 @@ namespace BankAccountClient.Initializers
         {
             MessageBox.Show("Server is not open! try again later", "Server Error", MessageBoxButton.OK,
                 MessageBoxImage.Error);
+            GV.Session.Close();
             Environment.Exit(0);
         }
     }

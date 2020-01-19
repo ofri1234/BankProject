@@ -12,11 +12,16 @@ namespace BankAccountClient.Globals
     public static class GV
     {
         public static TextBlock Invoker = new TextBlock();
-        
 
-        public const string IpAddress = "http://127.0.0.1:104";
-        public static Socket Session = Session ?? IO.Socket(IpAddress);
 
+        public const string IpAddress = "http://127.0.0.1:115";
+        public static Socket Session = Session;
+
+        public static void InitServer()
+        {
+            if (Session == null)
+                Session = IO.Socket(IpAddress);
+        }
 
         public static Window MWindow
         {
@@ -29,7 +34,7 @@ namespace BankAccountClient.Globals
 
         public static Grid MGrid
         {
-            get { return MainWindow.Instnace.MainGrid == null? null : MainWindow.Instnace.MainGrid; }
+            get { return MainWindow.Instnace.MainGrid == null ? null : MainWindow.Instnace.MainGrid; }
         }
 
         public static bool IsLoggedIn = false;

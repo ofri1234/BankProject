@@ -3,7 +3,7 @@ const server = require('http').createServer();
 const io = require('socket.io')(server);
 const UserService = require('./services/userService');
 
-const ServerPort = 104;
+const ServerPort = 115;
 
 
 
@@ -15,13 +15,22 @@ let OnClientConnect = function(socket)
     console.log("A New User Connected");
     //Init Listeners
     socket.on('LoginRequest',(data) =>{UserService.Login(data,socket)});
+    socket.on('disconnect',OnClientDisconnect);
 
 
     //Auth Server
     socket.emit('connectSucess');
 }
 
+let OnClientDisconnect = function(socket)
+{
+    console.log("A User Disconnected");
+    global.TotalUsers.splice({Session : socket});
+    
+    
 
+
+}
 
 //Starts The Listening
 console.log("Init Server, Please Wait...");

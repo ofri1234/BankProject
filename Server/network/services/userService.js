@@ -6,12 +6,12 @@ module.exports = {
         let user = await GetUser(data.Username);
         if (user) {
             if (user.Password == data.Password) {
-
                 res.status = true;
                 let mUser = Copy(user);
                 //Saves User to global list
                 mUser.Session = socket;
                 global.TotalUsers.push(mUser);
+
             }
             else {
                 res.err = "Username or password is not correct";

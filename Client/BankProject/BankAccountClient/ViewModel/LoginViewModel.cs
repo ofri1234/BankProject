@@ -104,6 +104,7 @@ namespace BankAccountClient.ViewModel
 
         private void TrasitionToDashBoard()
         {
+           
             GV.Invoker.UiChange(() =>
             {
 
