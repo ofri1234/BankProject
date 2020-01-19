@@ -3,6 +3,9 @@ var Movements = require('./movement');
 var userScheme = new mongoose.Schema({
     Username: String,
     Password: String,
+    FirstName: String,
+    LastName: String,
+    Email : String,
     Banned : Boolean(false),
     TotalMovment :[],
     TotalMoney : Number,
