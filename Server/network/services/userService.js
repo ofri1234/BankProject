@@ -11,7 +11,15 @@ module.exports = {
                 //Saves User to global list
                 mUser.Session = socket;
                 global.TotalUsers.push(mUser);
-                console.log(user);
+                //Give Player his date
+                res.accDetail = {};
+                res.accDetail.ID = user._id;
+                res.accDetail.FirstName = user.FirstName;
+                res.accDetail.LastName = user.LastName;
+                res.accDetail.TotalMoney = user.TotalMoney;
+                res.accDetail.TotalMovements = user.TotalMovment;
+                res.accDetail.MovementsCount = user.TotalMovment.length;
+                
                 
             }
             else {
