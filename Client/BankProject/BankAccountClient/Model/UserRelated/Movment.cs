@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace BankAccountClient.Model.UserRelated
 {
-    enum MovmentType
+    public enum MovmentType
     {
         Income,Outcome,
     }
-    class Movment
+
+    public class Movment
     {
-        public string ID { get; set; }
+        public string _id { get; set; }
         public MovmentType MType { get; set; }
         public int Amount { get; set; }
         public DateTime Date { get; set; }

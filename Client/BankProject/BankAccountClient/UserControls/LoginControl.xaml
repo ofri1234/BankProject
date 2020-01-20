@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BankAccountClient.UserControls"
              xmlns:vm="clr-namespace:BankAccountClient.ViewModel"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
              Height="350" Width="400">
     <UserControl.DataContext>
@@ -13,7 +14,13 @@
     <Grid>
         <Canvas>
             <TextBox Height="23" Canvas.Left="151" TextWrapping="Wrap" Text="{Binding LoginModel.Username}" Canvas.Top="93" Width="204"/>
-            <TextBox Height="23" Canvas.Left="151" TextWrapping="Wrap" Text="{Binding LoginModel.Password}" Canvas.Top="184" Width="204"/>
+            <TextBox Height="23"  Canvas.Left="151" TextWrapping="Wrap" Text="{Binding LoginModel.Password}" Canvas.Top="184" Width="204">
+                <TextBox.InputBindings>
+                    <KeyBinding 
+                        Key="Enter" 
+                        Command="{Binding FindUploadCommand}" />
+                </TextBox.InputBindings>
+            </TextBox>
             <TextBlock FontSize="25" Canvas.Left="23" TextWrapping="Wrap" Text="Username :" Canvas.Top="83"/>
             <TextBlock Canvas.Left="25" FontSize="25" TextWrapping="Wrap" Text="Password :" Canvas.Top="174"/>
             <Button IsEnabled="{Binding LoginBtnActiveState}" Command="{Binding LoginCmd}" FontSize="25" Content="Login" Canvas.Left="55" Canvas.Top="232" Width="280" Height="49"/>

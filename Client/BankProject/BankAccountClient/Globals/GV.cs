@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using BankAccountClient.Model.UserRelated;
 using Quobject.SocketIoClientDotNet.Client;
 
 namespace BankAccountClient.Globals
@@ -16,6 +17,9 @@ namespace BankAccountClient.Globals
 
         public const string IpAddress = "http://127.0.0.1:115";
         public static Socket Session = Session;
+
+
+        public static CurrentAccount CA;
 
         public static void InitServer()
         {

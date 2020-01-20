@@ -11,6 +11,8 @@ using System.Windows.Media;
 using System.Windows.Shapes;
 using BankAccountClient.Globals;
 using BankAccountClient.Model.Login;
+using BankAccountClient.Model.UserRelated;
+using BankAccountClient.UserControls.DashBoardUC;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using Newtonsoft.Json;
@@ -49,9 +51,9 @@ namespace BankAccountClient.ViewModel
 
 
 
-
         public RelayCommand LoginCmd { get; set; }
         public LoginModel LoginModel { get; set; } = new LoginModel();
+
 
         public LoginViewModel()
         {
@@ -89,6 +91,14 @@ namespace BankAccountClient.ViewModel
 
                 GV.IsLoggedIn = true;
                 //Move to main dashboard
+                CurrentAccount CA = new CurrentAccount(
+                     data["accDetail"]["ID"].ToString(),
+                     data["accDetail"]["FirstName"].ToString(),
+                     data["accDetail"]["LastName"].ToString(),
+                     totalMoney: decimal.Parse(data["accDetail"]["TotalMoney"].ToString())
+                    );
+                CA.CalcMovments(data);
+                GV.CA = CA;
                 TrasitionToDashBoard();
             }
             else
@@ -104,10 +114,11 @@ namespace BankAccountClient.ViewModel
 
         private void TrasitionToDashBoard()
         {
-           
+
             GV.Invoker.UiChange(() =>
             {
-
+                GV.MWindow.Width = 1200;
+                GV.MWindow.Height = 600;
                 var mGrid = GV.MGrid;
                 mGrid.ShowGridLines = true;
                 int GridColCount = 3;
@@ -155,19 +166,24 @@ namespace BankAccountClient.ViewModel
                 {
                     Rectangle r = new Rectangle();
                     if (i == 0)
-                       // r.Fill = new SolidColorBrush(Colors.Red);
+                    {
+                        MainDashDisplay MDS = GuiHelper.StartNewMainDashDisplay();
+                        mGrid.Children.Add(MDS);
+                    }
+                    // r.Fill = new SolidColorBrush(Colors.Red);
                     if (i == 1)
-                       // r.Fill = new SolidColorBrush(Colors.Blue);
-                    if (i == 2)
-                        //r.Fill = new SolidColorBrush(Colors.Black);
-                    Grid.SetColumn(r, i);
+                        // r.Fill = new SolidColorBrush(Colors.Blue);
+                        if (i == 2)
+                            //r.Fill = new SolidColorBrush(Colors.Black);
+                            Grid.SetColumn(r, i);
                     mGrid.Children.Add(r);
                 }
-                GV.MWindow.Width = 1200;
-                GV.MWindow.Height = 600;
+
                 this.ChangeTitle("Dashboard Screen");
 
                 #endregion
+
+
             });
 
         }
