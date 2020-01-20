@@ -17,7 +17,7 @@ let OnClientConnect = function(socket)
     socket.on('LoginRequest',(data) =>{UserService.Login(data,socket)});
     socket.on('disconnect',OnClientDisconnect);
 
-
+    
     //Auth Server
     socket.emit('connectSucess');
 }

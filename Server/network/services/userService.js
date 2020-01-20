@@ -11,7 +11,8 @@ module.exports = {
                 //Saves User to global list
                 mUser.Session = socket;
                 global.TotalUsers.push(mUser);
-
+                console.log(user);
+                
             }
             else {
                 res.err = "Username or password is not correct";
