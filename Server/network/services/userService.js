@@ -19,8 +19,6 @@ module.exports = {
                 res.accDetail.TotalMoney = user.TotalMoney;
                 res.accDetail.TotalMovements = user.TotalMovment;
                 res.accDetail.MovementsCount = user.TotalMovment.length;
-                
-                
             }
             else {
                 res.err = "Username or password is not correct";
