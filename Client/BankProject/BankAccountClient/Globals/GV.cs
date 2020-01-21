@@ -15,7 +15,8 @@ namespace BankAccountClient.Globals
         public static TextBlock Invoker = new TextBlock();
 
 
-        public const string IpAddress = "http://127.0.0.1:115";
+        //public const string IpAddress = "http://127.0.0.1:115";
+        public const string IpAddress = "http://91.205.172.45:100";
         public static Socket Session = Session;
 
 
